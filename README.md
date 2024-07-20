@@ -11,13 +11,17 @@ git commit -m "Initial commit"
 git push -u origin main 
 
 이렇게 하면 전체 개발 환경 업로드 됨.
+
 ============
+
 수정할 것이 있다면?
+
 git add .
 
 git pull origin main
 
-# 만약 병합 충돌이 발생하면 충돌을 해결하고 아래 명령어를 실행합니다.
+만약 병합 충돌이 발생하면 충돌을 해결하고 아래 명령어를 실행합니다.
+
 git commit -m "Resolve merge conflict"
 
 git push -u origin main
