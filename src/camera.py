@@ -54,15 +54,15 @@ def show_camera():
     window_title = "CSI Camera"
     
     # Print the GStreamer pipeline (for debugging)
-    print(gstreamer_pipeline(flip_method=0))
+    print(gstreamer_pipeline(flip_method=0)) #그냥 디버깅할 때 쓰는거임. 
     
-    # Open the video capture
+    #영상 녹화함.
     video_capture = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
     
-    if video_capture.isOpened():
+    if video_capture.isOpened(): #카메라가 열렸는지 확인
         try:
-            while not rospy.is_shutdown():
-                ret_val, frame = video_capture.read()
+            while not rospy.is_shutdown(): #ROS 노드가 종료될 때까지 루프를 계속 실행함.
+                ret_val, frame = video_capture.read() #ret_val이 True이면 프레임을 성공적으로 읽은 것이고, frame변수에 프레임 데이터가 저장됨.
                 
                 if ret_val:
                     try:
