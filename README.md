@@ -16,6 +16,8 @@ git push -u origin main
 
 수정할 것이 있다면?
 
+git pull origin main
+
 git add .
 
 git push -u origin main 
