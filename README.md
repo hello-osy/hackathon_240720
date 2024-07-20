@@ -16,17 +16,10 @@ git push -u origin main
 
 수정할 것이 있다면?
 
-git pull origin main
-
 git add .
 
-git push -u origin main 
-
-
-만약 병합 충돌이 발생하면 충돌을 해결하고 아래 명령어를 실행합니다.
+git commit -m "커밋 메시지"
 
 git pull origin main
 
-git commit -m "Resolve merge conflict"
-
-git push -u origin main
+git push -u origin main 
