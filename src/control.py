@@ -135,5 +135,5 @@ def main():
 def signal_handler(sig, frame):
     rospy.signal_shutdown('Shutting down')
 
-if __name__ == '__main__':
+if __name__ == '__main__': #스크립트가 직접 실행될 때 main() 함수를 호출하여 프로그램을 시작합니다.
     main()
