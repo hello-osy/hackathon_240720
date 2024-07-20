@@ -59,7 +59,7 @@ def show_camera():
     #영상 녹화함.
     video_capture = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
     
-    if video_capture.isOpened(): #카메라가 열렸는지 확인
+    if video_capture.isOpened(): #카메라가 열렸는지 확인함.
         try:
             while not rospy.is_shutdown(): #ROS 노드가 종료될 때까지 루프를 계속 실행함.
                 ret_val, frame = video_capture.read() #ret_val이 True이면 프레임을 성공적으로 읽은 것이고, frame변수에 프레임 데이터가 저장됨.
@@ -69,7 +69,7 @@ def show_camera():
                         # Convert the frame to a ROS Image message
                         ros_image = bridge.cv2_to_imgmsg(frame, encoding="bgr8")
                         
-                        # Publish the image
+                        # Publish the image 
                         image_pub.publish(ros_image)
                         
                         # Optional: Display the image in a window
