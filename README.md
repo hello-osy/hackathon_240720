@@ -18,7 +18,7 @@ git push -u origin main
 
 git add .
 
-git commit -m "커밋 메시지"
+git commit -m "0720 commit"
 
 git pull origin main
 
