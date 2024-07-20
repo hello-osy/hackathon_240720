@@ -13,6 +13,8 @@ import rospy
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 
+#카메라 사양에 맞게 뭔가 수정해야 할 수도?
+
 def gstreamer_pipeline(
     sensor_id=0,
     capture_width=1920,

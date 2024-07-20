@@ -7,6 +7,8 @@ from sensor_msgs.msg import Image
 from std_msgs.msg import Float32MultiArray
 from cv_bridge import CvBridge, CvBridgeError
 
+#관심 영역, 색상 범위만 수정하면 됨.
+
 class RoadLaneDetector:
     def __init__(self):
         self.poly_bottom_width = 0.85 #관심영역 선택할 때 필요한 값
@@ -335,7 +337,7 @@ def main():
     image_pub = rospy.Publisher('/lane_detector', Float32MultiArray, queue_size=10)
     
     #구독할 토픽, 구독할 메시지의 타입, 메시지 수신했을때 호출할 콜백 함수, 콜백 함수에 추가로 전달할 인수들
-    image_transport = rospy.Subscriber('/usb_cam/image_raw', Image, image_callback, (road_lane_detector, image_pub))
+    image_transport = rospy.Subscriber('/image', Image, image_callback, (road_lane_detector, image_pub))
 
     #result라는 이름의 창 생성
     # cv2.namedWindow("result")
