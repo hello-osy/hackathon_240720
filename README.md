@@ -17,6 +17,7 @@ git push -u origin main
 수정할 것이 있다면?
 
 git add .
+
 git commit -m "0720 commit"
 
 git pull origin main
