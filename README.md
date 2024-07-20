@@ -18,9 +18,12 @@ git push -u origin main
 
 git add .
 
-git pull origin main
+git push -u origin main 
+
 
 만약 병합 충돌이 발생하면 충돌을 해결하고 아래 명령어를 실행합니다.
+
+git pull origin main
 
 git commit -m "Resolve merge conflict"
 
