@@ -73,8 +73,11 @@ def main():
     frame_id = rospy.get_param('~frame_id', 'laser_frame') #파라미터 서버에서 frame_id를 가져오고, 기본값은 laser_frame입니다.
     scan_pub = rospy.Publisher('/lidar', LaserScan, queue_size=1000)
 
-    rospy.Service('stop_motor', Empty, stop_motor) #stop_motor 서비스를 정의합니다.
-    rospy.Service('start_motor', Empty, start_motor) #start_motor 서비스를 정의합니다.
+    #서비스 이름, 요청-응답 메시지 타입, 콜백 함수
+
+    #원래 코드에서는 서비스 이름이 콜백 함수 이름이랑 똑같았음. 헷갈려서 '/'붙임. 문제 생기면 원래대로 할 것.
+    rospy.Service('/stop_motor', Empty, stop_motor) #stop_motor 서비스를 정의합니다.
+    rospy.Service('/start_motor', Empty, start_motor) #start_motor 서비스를 정의합니다.
 
     lidar.set_motor_pwm(660) #LIDAR 모터를 시작합니다.
     lidar.start_scan() #LIDAR 스캔을 시작합니다.
@@ -83,11 +86,11 @@ def main():
 
     while not rospy.is_shutdown():
         scan_data = [] #스캔 데이터를 초기화합니다.
-        for scan in lidar.iter_scans(): #하나씩 담아서 저장함.
+        for scan in lidar.iter_scans(): 
             scan_data = scan
-            break
+            break #한 번의 스캔 데이터만 가져온다.
 
-        publish_scan(scan_pub, scan_data, frame_id)
+        publish_scan(scan_pub, scan_data, frame_id) #스캔 데이터를 발행함.
         rate.sleep()
 
     lidar.stop() #LIDAR 스캔을 중지합니다.
