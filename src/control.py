@@ -8,7 +8,7 @@ import time
 import queue
 from std_msgs.msg import String
 from sensor_msgs.msg import LaserScan
-from std_msgs.msg import Int32, Float32MultiArray
+from std_msgs.msg import Int32MultiArray, Float32MultiArray
 from jetracer.nvidia_racecar import NvidiaRacecar
 
 
@@ -262,7 +262,7 @@ def main():
     #콜백함수는 다시 설정할 것
     rospy.Subscriber('/imu', String, imu_callback)
     rospy.Subscriber('/lidar', LaserScan, lidar_callback)
-    #rospy.Subscriber('/distance', Int32, distance_callback) 일단 초음파 센서는 사용 안 함. 나중에 필요하면 사용하기로 했음.
+    #rospy.Subscriber('/distance', Int32MultiArray, distance_callback) 일단 초음파 센서는 사용 안 함. 나중에 필요하면 사용하기로 했음.
     rospy.Subscriber('/lane_detector', Float32MultiArray, lane_callback, (car_controller, nvidiaracecar)) #차선 정보를 점 4개로 표현한 정보를 받음. car_controller 인스턴스를 인수로 넘겨줌.
 
     # Ctrl+C 누르면 종료할 수 있게 만듦.
