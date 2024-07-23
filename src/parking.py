@@ -33,7 +33,7 @@ names: ['car', 'children', 'children_cross', 'green', 'parking', 'red', 'slow', 
 
 def detection_callback(msg):
     msg_length = len(msg.data)
-    for i in msg_length/3:
+    for i in msg_length/3 - 1 :
         cls_id, width, height = msg.data[3*i], msg.data[3*i+1], msg.data[3*i+2]
         if cls_id == 4: #주차 표지판 인식했을 때
             parking_detected = True
@@ -41,12 +41,11 @@ def detection_callback(msg):
 
 
 def main():
-    global detection_list
     rospy.init_node('parking')
     rospy.Subscriber('/distance', Int32MultiArray, distance_callback)
     rospy.Subscriber('/detected_objects', Int32MultiArray, detection_callback)
 
-    # Ctrl+C 누르면 종료할 수 있게 만듦7.
+    # Ctrl+C 누르면 종료할 수 있게 만듦.
     signal.signal(signal.SIGINT, signal_handler)
 
     rospy.spin()  # 콜백 함수를 호출하면서 계속 실행
